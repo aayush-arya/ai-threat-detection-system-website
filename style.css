@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
@@ -89,7 +92,7 @@ header p {
   line-height: 1.6;
 }
 
-header button {
+.cta-button {
   background: #00f7ff;
   border: none;
   padding: 15px 40px;
@@ -102,7 +105,7 @@ header button {
   box-shadow: 0 0 15px #00f7ff;
 }
 
-header button:hover {
+.cta-button:hover {
   background: #00cfd1;
   box-shadow: 0 0 25px #00f7ff, 0 0 50px #00f7ff;
 }
@@ -351,4 +354,103 @@ footer {
   box-shadow: 0 0 20px rgba(0, 240, 255, 0.9), 
               0 0 40px rgba(0, 240, 255, 0.7);
 }
+/* Card Demo Button */
+/* style.css */
 
+.card-demo-button {
+    /* Set display properties */
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 20px;
+    
+    /* Neon Styling */
+    color: #00ffff; /* Neon text color */
+    background: transparent; /* Clear background */
+    
+    /* Border and Glow */
+    border: 1px solid #00ffff;
+    border-radius: 5px;
+    
+    /* Text properties */
+    text-decoration: none; /* Remove underline */
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    
+    /* Subtle inner glow for effect */
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    
+    transition: all 0.3s ease;
+}
+
+.card-demo-button:hover {
+    /* Reverse the colors on hover for emphasis */
+    background: #00ffff; 
+    color: #000000;
+    
+    /* Enhance the glow */
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+}
+/*Suspicious Text Detection Card Demo Button*/
+
+.cta-button {
+    /* Your existing button styles... */
+
+    /* ADD these two lines: */
+    position: relative; 
+    z-index: 999; /* Set a very high layer value to guarantee front position */
+}
+
+/* Also ensure the parent container is positioned relative */
+.demo-container {
+    position: relative;
+    /* You can set a lower z-index here if needed, e.g., z-index: 1; */
+}
+
+.demo-container {
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff; /* White text for dark background */
+}
+
+#text-input {
+    width: 100%;
+    height: 150px;
+    background: #1a1a1a; /* Dark background */
+    border: 1px solid #00ffff; /* Neon border */
+    color: #fff;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    resize: vertical;
+}
+
+.analysis-output {
+    margin-top: 40px;
+    padding: 20px;
+    background: #111;
+    border: 2px solid #00ffff; /* Main glowing box */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    border-radius: 8px;
+    text-align: left;
+}
+
+.score-box {
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(0, 255, 255, 0.1);
+    color: #00ffff;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.highlighted {
+    /* Style for text flagged as suspicious */
+    color: #ff4d4d; /* Bright red for danger */
+    font-weight: bold;
+    background-color: rgba(255, 0, 0, 0.2);
+    padding: 2px 0;
+}

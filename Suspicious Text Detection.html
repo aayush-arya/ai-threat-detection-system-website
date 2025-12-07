@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css"> 
+    <title>Suspicious Text Detection</title>
+</head>
+<body>
+    
+    <div class="demo-container">
+        <h1>🔍 Suspicious Text Detection</h1>
+        
+        <p class="explanation">
+            Paste any text below to see how our proprietary NLP model identifies 
+            malicious intent, radicalization patterns, and emerging threats.
+        </p>
+        
+        <textarea id="text-input" placeholder="Enter text for analysis..."></textarea>
+        
+        <button id="analyze-button" class="cta-button">Analyze Text</button>        
+        <div id="output-area" class="analysis-output hidden">
+            <h2>Analysis Results</h2>
+            <div id="result-text"></div>
+            <div class="score-box">
+                AI Confidence Score: <span id="confidence-score"></span>
+            </div>
+        </div>
+    </div>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Everything inside this function waits until the entire HTML document is ready.
+    const analyzeButton = document.getElementById('analyze-button');
+    
+    // Check if the button was successfully found before trying to add the listener
+    if (analyzeButton) {
+        analyzeButton.addEventListener('click', function() {
+            const inputText = document.getElementById('text-input').value;
+            const outputArea = document.getElementById('output-area');
+            const resultDiv = document.getElementById('result-text');
+            const scoreSpan = document.getElementById('confidence-score');
+            
+            // 1. Define suspicious keywords (simulated model logic)
+            const keywords = ['attack', 'bomb', 'threat', 'kill', 'terror'];
+            
+            let processedText = inputText;
+            let suspicionCount = 0;
+
+            // 2. Loop through keywords and replace them with highlighted HTML
+            keywords.forEach(keyword => {
+                // Use the safer string concatenation (or the backticks if preferred)
+                const regex = new RegExp('(' + keyword + ')', 'gi'); 
+                
+                const replacement = '<span class="highlighted">$1</span>';
+                
+                const matches = processedText.match(regex);
+                if (matches) {
+                    suspicionCount += matches.length;
+                }
+                
+                processedText = processedText.replace(regex, replacement);
+            });
+
+            // 3. Display the processed text
+            resultDiv.innerHTML = processedText;
+            
+            // 4. Simulate a confidence score based on keyword count
+            let confidence = Math.min(100, 40 + suspicionCount * 10);
+            
+            scoreSpan.textContent = confidence.toFixed(2) + '%';
+            
+            outputArea.classList.remove('hidden'); 
+            
+            // Scroll smoothly to the output area
+            outputArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    } else {
+        console.error("Error: 'analyze-button' element not found.");
+    }
+});
+</script>
+</body>
+</html>
